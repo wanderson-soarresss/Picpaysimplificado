@@ -1,17 +1,15 @@
-package com.Picpaysimplificado.domain.user;
-
+package com.picpaysimplificado.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.usertype.UserType;
 
 import java.math.BigDecimal;
 
-@Entity(name="users")
-@Table(name="users")
+@Entity(name = "users")
+@Table (name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,12 +21,12 @@ public class User {
 
     private String FirstName;
 
-    private String LastName;
+    private String Lastname;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String document;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String email;
 
     private String password;
@@ -37,4 +35,6 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+
 }

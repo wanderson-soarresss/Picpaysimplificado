@@ -1,6 +1,7 @@
-package com.Picpaysimplificado.domain.user.transaction;
+package com.picpaysimplificado.domain.transaction;
 
-import com.Picpaysimplificado.domain.user.User;
+
+import com.picpaysimplificado.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,12 +11,13 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "transactions")
 @Table(name = "transactions")
 @Getter
 @Setter
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode
+
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +34,6 @@ public class Transaction {
     private User receiver;
 
     private LocalDateTime timestamp;
+
+
 }
