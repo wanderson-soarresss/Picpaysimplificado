@@ -43,6 +43,13 @@ public class TransactionService {
         newtransaction.setReceiver(receiver);
         newtransaction.setTimestamp(LocalDateTime.now());
 
+        sender.setBalance(sender.getBalance().subtract(transaction.value()));
+        receiver.setBalance(receiver.getBalance().add(transaction.value()));
+
+        this.repository.save(newtransaction);
+        this.userService.saveUser(sender);
+        this.userService.saveUser(receiver);
+
     }
     public boolean authorizeTransaction(User sender, BigDecimal value){
         ResponseEntity<Map> authorizationResponse = restTemplate.getForEntity("https://util.devi.tools/api/v2/authorize", Map.class);
