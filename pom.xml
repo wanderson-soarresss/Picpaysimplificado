@@ -94,6 +94,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<!-- Plugin para garantir a codificação UTF-8 durante o processamento de recursos -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
