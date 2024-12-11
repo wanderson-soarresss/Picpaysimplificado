@@ -33,5 +33,4 @@ public class Transaction {
 
     private LocalDateTime timestamp;
 
-
 }
