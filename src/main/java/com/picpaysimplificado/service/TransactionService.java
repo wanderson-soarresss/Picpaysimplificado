@@ -40,24 +40,23 @@ public class TransactionService {
             throw new Exception("Transação não autorizada");
         }
 
-        Transaction newtransaction = new Transaction();
-        newtransaction.setAmount(transaction.value());
-        newtransaction.setSender(sender);
-        newtransaction.setReceiver(receiver);
-        newtransaction.setTimestamp(LocalDateTime.now());
+        Transaction newTransaction = new Transaction();
+        newTransaction.setAmount(transaction.value());
+        newTransaction.setSender(sender);
+        newTransaction.setReceiver(receiver);
+        newTransaction.setTimestamp(LocalDateTime.now());
 
         sender.setBalance(sender.getBalance().subtract(transaction.value()));
         receiver.setBalance(receiver.getBalance().add(transaction.value()));
 
-        this.repository.save(newtransaction);
+        this.repository.save(newTransaction);
         this.userService.saveUser(sender);
         this.userService.saveUser(receiver);
 
         this.notificationService.sendNotification(sender,"Transação realizada com sucesso");
         this.notificationService.sendNotification(receiver,"Transação recebida com sucesso");
 
-        return newtransaction;
-
+        return newTransaction;
 
 
     }
